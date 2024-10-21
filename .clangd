@@ -1,0 +1,9 @@
+CompileFlags:
+  Add: 
+    - -Ilib/cglm/include
+    - -Ilib/glad/include
+    - -Ilib/glfw/include
+    - -Ilib/stb
+    - -Ilib/noise
+    - -std=c11
+    - -fbracket-depth=1024
