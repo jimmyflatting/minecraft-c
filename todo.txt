@@ -1,0 +1,6 @@
+Camera should follow the entity with the camera component (copy their position)
+
+ECS:
+  - Camera component (copy position of the entity)
+  - Position component (move the entity, xyz)
+

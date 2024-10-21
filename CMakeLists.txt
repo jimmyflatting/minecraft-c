@@ -11,7 +11,7 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-gnu-compound-literal-initializer -Wno-g
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fbracket-depth=1024")
 
 # Set include directories
-include_directories(lib/cglm/include lib/glad/include lib/glfw/include lib/stb lib/noise src/ecs)
+include_directories(lib/cglm/include lib/glad/include lib/glfw/include lib/stb lib/noise src/)
 
 # Add external libraries
 add_subdirectory(lib/cglm)
@@ -49,4 +49,11 @@ set_target_properties(game PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_D
 add_custom_command(
     TARGET game PRE_BUILD
     COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_BINARY_DIR}/bin"
+)
+
+# Custom build step for copying assets to the bin directory
+add_custom_command(
+    TARGET game POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/data/assets" "${CMAKE_BINARY_DIR}/bin/assets"
+    COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/data/shaders" "${CMAKE_BINARY_DIR}/bin/shaders"
 )
